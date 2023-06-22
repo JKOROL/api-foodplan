@@ -7,5 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jonathan KOROL",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "js-sha1": "^0.6.0",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.4.0"
+  }
 }

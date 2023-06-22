@@ -1,0 +1,16 @@
+{
+    "bdd" : {
+        "host" : "localhost",
+        "port" : 3306,
+        "user" : "root",
+        "password" : "root",
+        "database" : "foodplan"
+    },
+    "settings" : {
+        "port" : 8080,
+        "acceptedDomains" : "*",
+        "defaultDurationToken" : 60,
+        "defaultDurationTokenStayConnected" : 43200,
+        "privateKey" : "dcb0d28d022f12013d98c80e0f427d6a03ef34b0"
+    }
+}
