@@ -13,6 +13,7 @@ app.use(cors({
     origin: config.settings.acceptedDomains,
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
+app.use(express.json())
 
 var database = mysql.createConnection(config.bdd);
 
@@ -45,25 +46,24 @@ app.get('/user/:id', (req,res)=>{
             res.status(200).json(result);
         }
         else{
-            res.status(401).json("User not found")
+            res.status(401).json({status:"error",message:"User not found"})
         }
     });
 });
 
 app.post('/user', (req,res)=>{
-    const mail = req.body.mail;
+    const email = req.body.email;
     const password = req.body.password;
     const username = req.body.username;
     const salt = (Math.random() + 1).toString(36).substring(7);
-    console.log(salt)
-    database.query("INSERT INTO userAccount(mail,password,passHash,username) VALUES ('"+mail+"','"+sha1(password+salt)+"','"+salt+"','"+username+"')", (error, result) => {
+    database.execute("INSERT INTO userAccount(email,passHash,salt,username,idQuestion,answer) VALUES (?,?,?,?,?,?)",[email,sha1(password+salt),salt,username,1,"ee"], (error, result) => {
         if(error)
         {
             console.log(error.message);
             res.status(500).send();
         }
         else{
-            res.status(200).json(result);
+            res.status(200).json({status:"succes",message:"Inscription réussie"});
         }
     });
 });
