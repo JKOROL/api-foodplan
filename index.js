@@ -60,7 +60,7 @@ app.get('/checkEmail/:email', (req,res)=>{
 });
 
 app.get('/user', (req,res)=>{
-    database.query("SELECT username,mail,avatar FROM userAccount", (error, result) => {
+    database.query("SELECT username,email,avatar FROM userAccount", (error, result) => {
         if(error) throw Error(error.message);
         res.status(200).json(result);
     });
